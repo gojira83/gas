@@ -1,0 +1,20 @@
+CFLAGS = -I./include -std=c++14 -O3 -fPIC -march=native -c
+
+rule cc
+    command = clang++ $CFLAGS -o $out $in
+
+rule lib
+    command = clang++ -shared -o $out $in
+
+rule exe
+    command = clang++ $libs -o $out $in
+
+build tmp/gas/engine/cell.o: cc src/gas/engine/cell.cpp
+build tmp/gas/engine/common.o: cc src/gas/engine/common.cpp
+build tmp/gas/engine/config.o: cc src/gas/engine/config.cpp
+build tmp/gas/engine/connection.o: cc src/gas/engine/connection.cpp
+build tmp/gas/engine/gas.o: cc src/gas/engine/gas.cpp
+
+build tmp/gas/storage/yaml.o: cc src/gas/storage/yaml.cpp
+
+build lib/libgas.so: lib tmp/gas/engine/cell.o tmp/gas/engine/common.o tmp/gas/engine/config.o  tmp/gas/engine/connection.o tmp/gas/engine/gas.o tmp/gas/storage/yaml.o
