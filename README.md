@@ -8,6 +8,8 @@ gas is a implementation of neuronal gas.
 
 ## dependencies
 
++ [logging](https://github.com/gojira83/logging)
++ [yaml-cpp](https://github.com/jbeder/yaml-cpp)
 
 ## building
 

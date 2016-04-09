@@ -1,0 +1,16 @@
+config:
+  release:
+    cflags: -std=c++11 -O3 -fPIC -march=native
+    dependencies: []
+    includes: [./include]
+    libraries: []
+    sources: [./src/**/*.cpp]
+    type: exe
+  dev:
+    cflags: -std=c++11 -O3 -fPIC -march=native
+    dependencies: ['../logging']
+    includes: [./include]
+    libraries: []
+    sources: [./src/**/*.cpp]
+    type: exe
+name: gas
