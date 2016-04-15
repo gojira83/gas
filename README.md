@@ -1,6 +1,6 @@
 # gas
 
-+ **author:** Arne (gojira) Simon [arne_simon@gmx.de]
+**author:** Arne (gojira) Simon [arne_simon@gmx.de]
 
 gas is a implementation of neuronal gas.
 
@@ -13,10 +13,4 @@ gas is a implementation of neuronal gas.
 
 ## building
 
-The [ninja](https://ninja-build.org/)  build system is used.
-Via default the [clang++]() compiler ist used, if you want to use another compiler
-you have to edit the *build.ninja* file by yourself.
-
-```bash
-    $ ninja
-```
+[builda](https://github.com/gojira83/builda) is used as build tool.

@@ -8,9 +8,12 @@ config:
     type: exe
   dev:
     cflags: -std=c++11 -O3 -fPIC -march=native
-    dependencies: ['../logging']
+    dependencies: 
+        -   url: '../logging'
+            branch: master
+            config: release
     includes: [./include]
-    libraries: []
+    libraries: ['yaml-cpp']
     sources: [./src/**/*.cpp]
     type: exe
 name: gas

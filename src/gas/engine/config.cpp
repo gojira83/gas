@@ -5,7 +5,7 @@
  *        Author: code.ninja
  */
 
-#include "config.hpp"
+#include <gas/engine/config.hpp>
 
 #include <fstream>
 
@@ -69,15 +69,15 @@ namespace gas {
         YAML::Node Config::to_yaml() {
             YAML::Node node;
 
-            node["inputs"] = inputs;
-            node["outputs"] = outputs;
-            node["max_connection_age"] = max_connection_age;
-            node["first_move_factor"] = first_move_factor;
+            node["inputs"]                 = inputs;
+            node["outputs"]                = outputs;
+            node["max_connection_age"]     = max_connection_age;
+            node["first_move_factor"]      = first_move_factor;
             node["neighbours_move_factor"] = neighbours_move_factor;
-            node["sqr_phi"] = sqr_phi;
-            node["cycles_per_spawn"] = cycles_per_spawn;
-            node["error_decrease"] = error_decrease;
-            node["name"] = name;
+            node["sqr_phi"]                = sqr_phi;
+            node["cycles_per_spawn"]       = cycles_per_spawn;
+            node["error_decrease"]         = error_decrease;
+            node["name"]                   = name;
 
             return node;
         }

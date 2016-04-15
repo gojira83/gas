@@ -5,7 +5,7 @@
  *      Author: code.ninja
  */
 
-#include "connection.hpp"
+#include <gas/engine/connection.hpp>
 
 namespace gas {
 

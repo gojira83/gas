@@ -5,7 +5,7 @@
  *        Author: code.ninja
  */
 
-#include "gas.hpp"
+#include <gas/engine/gas.hpp>
 
 #include <cmath>
 #include <fstream>

@@ -5,7 +5,7 @@
  *      Author: code.ninja
  */
 
-#include "cell.hpp"
+#include <gas/engine/cell.hpp>
 
 #include <boost/random/lagged_fibonacci.hpp>
 
