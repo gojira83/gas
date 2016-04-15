@@ -18,15 +18,18 @@ namespace gas {
        class Connection;
 
        class Cell {
-           public:
-               int idx;
-               double *inputs;
-               double *outputs;
-               double error = 0;
-               std::map< Cell*, Connection* > neighbours;
+        public:
 
-               Cell(int Idx, int Ins, int Outs);
-               virtual ~Cell();
+            unsigned idx;
+            unsigned cluster_id;
+            double *inputs;
+            double *outputs;
+            double error = 0;
+            std::map< Cell*, Connection* > neighbours;
+
+            Cell(unsigned Idx, unsigned Ins, unsigned Outs);
+            
+            virtual ~Cell();
        };
 
     } // engine

@@ -14,7 +14,7 @@ namespace gas {
 
    namespace engine {
 
-      Cell::Cell(int Idx, int Ins, int Outs) {
+      Cell::Cell(unsigned Idx, unsigned Ins, unsigned Outs) {
          idx = Idx;
          inputs = new double[Ins];
          outputs = new double[Outs];
@@ -22,7 +22,7 @@ namespace gas {
 
          boost::random::lagged_fibonacci607 fibrand;
 
-         for(int i = 0; i < Ins; i++){
+         for(unsigned i = 0; i < Ins; i++){
             inputs[i] = fibrand();
          }
       }

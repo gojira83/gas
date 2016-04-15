@@ -21,7 +21,7 @@ namespace gas {
             const char* what() const noexcept override;
         };
 
-        std::string get_random_name();
+        // std::string get_random_name();
 
     } // engine
 

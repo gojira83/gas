@@ -8,7 +8,7 @@
 #include <gas/engine/gas.hpp>
 
 #include <cmath>
-#include <fstream>
+#include <limits>
 #include <gas/engine/common.hpp>
 
 
@@ -20,9 +20,7 @@ namespace gas {
 
         Gas::Gas(std::shared_ptr<Config> c)
             : config(c) {
-            name = get_random_name();
-
-            log.debug("create gas ", name);
+            log.debug("create gas");
 
             _first_dis_buffer = new double[ config->inputs ];
             _dis_buffer = new double[ config->inputs ];
@@ -33,12 +31,20 @@ namespace gas {
         }
 
         Gas::~Gas() {
-            log.debug("destroy gas ", name);
+            log.debug("destroy gas");
 
             delete _first_dis_buffer;
             delete _dis_buffer;
             delete _inputs;
             delete _outputs;
+
+            for(auto cell: this->cells) {
+                delete cell;
+            }
+
+            for(auto con: this->connections) {
+                delete con;
+            }
         }
 
         Cell* Gas::_createCell() {
@@ -252,7 +258,7 @@ namespace gas {
         }
 
         void Gas::show( double* inputs, double* outputs ) {
-            log.debug("show ");
+            log.debug("show");
 
             for ( int i = 0; i < config->inputs; ++i ) {
                 _inputs[ i ] = inputs[ i ];
@@ -271,12 +277,49 @@ namespace gas {
 
             __output();
         }
+
+        void Gas::approx(double* inputs, double* outputs) {
+            log.debug("approx");
+
+            for ( int i = 0; i < config->inputs; ++i ) {
+                _inputs[ i ] = inputs[ i ];
+            }
+
+            __findnearest();
+            __output();
+
+            for ( int i = 0; i < config->outputs; ++i ) {
+                outputs[ i ] = _first->outputs[ i ];
+            }
+        }
+
+        void __browse(Cell* previous) {
+            for(auto entry : previous->neighbours) {
+
+                if(entry.first->cluster_id == 0) {
+                    entry.first->cluster_id = previous->cluster_id;
+                    __browse(entry.first);
+                }
+            }
+        }
+
+        unsigned Gas::clusteriese() {
+            _cluster_id_pool = 1;
+
+            for(auto cell : cells) {
+                cell->cluster_id = 0;
+            }
+
+            for(auto cell : cells) {
+                if(cell->cluster_id == 0) {
+                    cell->cluster_id = _cluster_id_pool++;
+                    __browse(cell);
+                }
+            }
+
+            return _cluster_id_pool - 1;
+        }
     } // engine
 
 
 }/* namespace gas */
-
-
-std::ostream& operator<<(std::ostream& os, const gas::engine::Gas& gg) {
-    return os;
-}

@@ -9,6 +9,7 @@
 #define GAS_GAS_HPP_
 
 #include <list>
+#include <memory>
 
 #include <logging/logger.hpp>
 
@@ -22,7 +23,8 @@ namespace gas {
     namespace engine {
 
         class Gas {
-            int _idpool = 0;
+            unsigned _idpool = 0;
+            unsigned _cluster_id_pool = 0;
             Cell* _first;
             Cell* _second;
             double* _inputs;
@@ -32,7 +34,7 @@ namespace gas {
             int _cycles;
 
             Cell* _createCell();
-            Connection* _connect( Cell* start, Cell* end );
+            Connection* _connect(Cell* start, Cell* end);
             /**
              * Find first and second nearest.
              */
@@ -53,14 +55,19 @@ namespace gas {
 
             std::list< Cell* > cells;
             std::list< Connection* > connections;
-            std::string name;
             std::shared_ptr<Config> config;
 
             Gas(std::shared_ptr<Config> c);
 
-            void setInput( double* values );
+            void setInput(double* values);
             void calculate();
-            void show( double* inputs, double* outputs );
+            void show(double* inputs, double* outputs);
+            void approx(double* inputs, double* outputs);
+
+            /// 
+            /// @return     The number of clusters found.
+            ///
+            unsigned clusteriese();
 
             virtual ~Gas();
         };
@@ -68,7 +75,5 @@ namespace gas {
     } // engine
 
 } /* namespace gas */
-
-std::ostream& operator<<(std::ostream& os, const gas::engine::Gas& gg);
 
 #endif /* GAS_GAS_HPP_ */

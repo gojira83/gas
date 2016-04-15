@@ -10,29 +10,29 @@ namespace gas {
             return message;
         }
 
-        std::string get_random_name() {
-            std::ifstream names("/etc/names.csv");
+        // std::string get_random_name() {
+        //     std::ifstream names("/etc/names.csv");
 
-            if(names) {
-                srand(time(nullptr));
+        //     if(names) {
+        //         srand(time(nullptr));
 
-                names.seekg(0, names.end);
-                int size = names.tellg();
-                int random_line = rand() % (size - 1);
+        //         names.seekg(0, names.end);
+        //         int size = names.tellg();
+        //         int random_line = rand() % (size - 1);
 
-                names.seekg(random_line, names.beg);
+        //         names.seekg(random_line, names.beg);
 
-                char buffer[50];
+        //         char buffer[50];
 
-                names.getline(buffer, 50);
-                names.getline(buffer, 50);
+        //         names.getline(buffer, 50);
+        //         names.getline(buffer, 50);
 
-                return buffer;
-            }
-            else {
-                throw GasException("could not find /etc/names.csv");
-            }
-        }
+        //         return buffer;
+        //     }
+        //     else {
+        //         throw GasException("could not find /etc/names.csv");
+        //     }
+        // }
 
     } // engine
 
