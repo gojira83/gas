@@ -1,12 +1,5 @@
-/*
- * Gas.hpp
- *
- *  Created on: 10.03.2014
- *      Author: code.ninja
- */
-
-#ifndef GAS_GAS_HPP_
-#define GAS_GAS_HPP_
+#ifndef GAS_ENGINE_GAS_HPP
+#define GAS_ENGINE_GAS_HPP
 
 #include <list>
 #include <memory>
@@ -64,7 +57,7 @@ namespace gas {
             void show(double* inputs, double* outputs);
             void approx(double* inputs, double* outputs);
 
-            /// 
+            ///
             /// @return     The number of clusters found.
             ///
             unsigned clusteriese();
@@ -76,4 +69,4 @@ namespace gas {
 
 } /* namespace gas */
 
-#endif /* GAS_GAS_HPP_ */
+#endif /* GAS_ENGINE_GAS_HPP */

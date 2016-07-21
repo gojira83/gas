@@ -1,8 +1,12 @@
-inputs: 2
-outputs: 1
-max_connection_age: 50
-first_move_factor: 0.1
-neighbours_move_factor: 0.1
-sqr_phi: 0.25
-cycles_per_spawn: 20
-error_decrease: 0.8
+storage:
+  format: binary
+  path: example/gas.db
+gas:
+  inputs: 2
+  outputs: 1
+  max_connection_age: 50
+  first_move_factor: 0.1
+  neighbours_move_factor: 0.1
+  sqr_phi: 0.25
+  cycles_per_spawn: 20
+  error_decrease: 0.8

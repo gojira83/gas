@@ -1,14 +1,14 @@
 config:
   release:
-    cflags: -std=c++11 -O3 -fPIC -march=native
+    cflags: -std=c++14 -O3 -fPIC -march=native
     dependencies: []
     includes: [./include]
-    libraries: []
+    libraries: ['yaml-cpp']
     sources: [./src/**/*.cpp]
     type: exe
   dev:
-    cflags: -std=c++11 -O3 -fPIC -march=native
-    dependencies: 
+    cflags: -std=c++14 -O3 -fPIC -march=native
+    dependencies:
         -   url: '../logging'
             branch: master
             config: release

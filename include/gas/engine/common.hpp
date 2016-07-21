@@ -1,5 +1,5 @@
-#ifndef GAS_COMMON_HPP
-#define GAS_COMMON_HPP
+#ifndef GAS_ENGINE_COMMON_HPP
+#define GAS_ENGINE_COMMON_HPP
 
 #include <string>
 #include <fstream>
@@ -28,4 +28,4 @@ namespace gas {
 
 } // gas
 
-#endif // GAS_COMMON_HPP
+#endif // GAS_ENGINE_COMMON_HPP
